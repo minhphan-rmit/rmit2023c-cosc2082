@@ -1,0 +1,8 @@
+2234: Result 11 is a palindrome.
+451: Result 10 is not a palindrome.
+Add 1 to make it a palindrome.
+9: Result 9 is a palindrome.
+10: Result 1 is a palindrome.
+12345: Result 15 is not a palindrome.
+Minus 4 to make it a palindrome.
+9996: Result 33 is a palindrome.
