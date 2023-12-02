@@ -1,0 +1,117 @@
+ #include <cmath>
+#include <iostream>
+
+// complex numbers e.g.: 3 + 4i    100 + 50i
+class ComplNum {
+private:
+    double real;
+    double imag;
+
+public:
+    ComplNum(){}; // default constructor with no parameters;
+    ComplNum(double real_val, double imag_val) { // normal constructor
+        this->real = real_val;
+        this->imag = imag_val;
+    };
+
+    void showInfo() { // print out information
+        std::cout << real << ((imag >= 0) ? " + " : "-") << imag << "i \n";
+    }
+
+    // Overloading the - operator    (object - object2) --> return object
+    // e.g. 10 + 5i    - (2 + 2i)  =   8 + 3i
+    ComplNum operator-(ComplNum num2) {
+        ComplNum result;
+        result.real = this->real - num2.real;
+        result.imag = this->imag - num2.imag;
+        
+        return result;
+    }
+
+    // Overloading the - operator    (object - double) --> return object
+    // e.g. 10 + 5i    - 5   =  5 + 5i
+    ComplNum operator-(double num2) {
+        ComplNum result;
+        result.real = this->real - num2;
+        result.imag = this->imag;
+        
+        return result;
+    }
+
+    // Overloading the - operator    (double - object) --> return object
+    friend ComplNum operator-(double num1, ComplNum num2); // external
+    
+    // Overloading the -- operator  --object  --> return object (after -1) ;
+    ComplNum operator--() {
+    this->real--;
+    
+    return *this;
+    }
+
+  // Overloading the -- operator    object--  --> return object (before -1);
+  ComplNum operator--(int) {
+    ComplNum temp = *this; // get values of current object
+    this->real--;
+
+    return temp; // return previous values
+  }
+
+  // declare an external function as a friend
+  friend double abs_val(ComplNum num);
+};
+
+// Overloading the - operator    (double - object) --> object
+// e.g. 5 -    (10 + 5i)    =   -5  -5i
+ComplNum operator-(double num1, ComplNum num2) {
+    ComplNum result;
+    result.real = num1 - num2.real;
+    result.imag = -num2.imag;
+    return result;
+    
+    // Option 2
+    ComplNum temp = num2 - num1;
+    return ComplNum(-temp.real, -temp.imag);
+};
+
+// Qc: function to calculate absolute value
+double abs_val(ComplNum num) {
+    return sqrt(num.real * num.real + num.imag * num.imag);
+}
+
+int main() {
+    // Qa
+    ComplNum num1(100, 5), num2(5.5, 10.5);
+    std::cout << "num1 = ";
+    num1.showInfo();
+    std::cout << "num2 = ";
+    num2.showInfo();
+    
+    // Qb
+    ComplNum result = num1 - num2;
+    std::cout << "\nnum1 - num2 : \t";
+    result.showInfo();
+    
+    result = num1 - 2;
+    std::cout << "\nnum1 - 25 : \t";
+    result.showInfo();
+    
+    result = 10 - num1;
+    std::cout << "\n10 - num1 : \t";
+    result.showInfo();
+    
+    --num1;
+    std::cout << "\n--num1: ";
+    num1.showInfo();
+    
+    result = num2--; //--> result = ?
+    std::cout << "\nresult = num2--: \n";
+    std::cout << "num2 = ";
+    num2.showInfo();
+    std::cout << "result = ";
+    result.showInfo();
+    
+    // Qc
+    std::cout << "\nAbsolute value of num1: " << abs_val(num1);
+    
+    return 0;
+}

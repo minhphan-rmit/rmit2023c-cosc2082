@@ -1,0 +1,12 @@
+David James, 68 64 75
+Nguyen Van A, 50 70 72
+Jung Ho-yeon, 68 64 75
+Peter Pan, 62 63 59
+Tran Hai Nam, 86 55 79
+Hari Won, 65 74 78
+Harry Potter, 86 65 71
+Nguyen Quang Hai, 83 64 57
+Song Hye Kyo, 69 67 73
+John Smith, 92 88 77
+
+
