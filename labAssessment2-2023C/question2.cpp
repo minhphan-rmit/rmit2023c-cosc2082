@@ -62,6 +62,7 @@ public:
                         head = temp->nextCity;
                     }
                     delete temp;
+                    temp = nullptr;
                     std::cout << "> Removed from the trip plan. ";
                 } else {
                     temp->stayingDays = newDays;
